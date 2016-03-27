@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -30,6 +31,7 @@ class CompanyController extends Controller
     }
 
     public function select($id) {
+        DB::beginTransaction();
         // Deselect old company
         if (is_object($this->company)) {
             $this->company->selected=false;
@@ -39,6 +41,7 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $company->selected = true;
         $company->save();
+        DB::commit();
         // Assign global method variable
         $this->company = $company;
         return Redirect::back()->with('message',"Company '" . $company->Name . "' selected.");

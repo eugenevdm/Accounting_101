@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Sage\SageoneApi;
 use App\Sageone\Api;
 use Illuminate\Support\Facades\DB;
 

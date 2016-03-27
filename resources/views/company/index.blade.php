@@ -27,6 +27,7 @@
                 <tr>
                     {{--<th>ID</th>--}}
                     <th>Company Name</th>
+                    <th>Username</th>
                     <th>Sync</th>
                     <th>Action</th>
                     {{--<th>Last Login</th>--}}
@@ -37,7 +38,8 @@
                 @foreach ($companies as $company)
                     <tr>
                         <td><a href="{{ route('selectCompany', ['id' => $company->id]) }}">{{ $company->Name}}</a></td>
-                        <td>{{ $company->sync}} </td>
+                        <td>{{ $company->username }} </td>
+                        <td>{{ $company->sync }} </td>
                         <td width="1%">
                             <a href="{{ route('company.edit',$company->id) }}">
                                     <span class="btn btn-primary btn-sm" title="Edit">

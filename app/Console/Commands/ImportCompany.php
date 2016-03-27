@@ -86,13 +86,6 @@ class ImportCompany extends Command
         $response = Invoice::import($company);
         Utils::decho ( $response['status'] . ': ' . $response['results'] );
 
-//        $response = Account::import($company);
-//        Utils::decho ("Status of import: " . $response['status']);
-//        Utils::decho ($response['results']);
-
-
-
-
     }
 
 }

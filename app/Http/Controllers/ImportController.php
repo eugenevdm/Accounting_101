@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Account;
-use App\AccountCategory;
-use App\AnalysisCategory;
-use App\AnalysisType;
-use App\Company;
 use App\Item;
-use App\Customer;
+use App\Account;
+use App\Company;
 use App\Invoice;
+use App\Customer;
+use App\AnalysisType;
 use App\ItemCategory;
 use App\Http\Requests;
+use App\AccountCategory;
+use App\AnalysisCategory;
 use App\CustomerCategory;
 
 class ImportController extends Controller
@@ -55,7 +55,7 @@ class ImportController extends Controller
                 $result = "Error: Unknown import module '$module'.'";
                 break;
         }
-        //echo $result;
+
         return $result;
     }
 

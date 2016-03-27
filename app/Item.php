@@ -13,6 +13,10 @@ class Item extends CompanyBaseModel
         return $this->belongsTo('App\ItemCategory', 'CategoryId');
     }
 
+    public function invoice_items() {
+        return $this->hasMany('App\InvoiceItem', 'SelectionId');
+    }
+
     public static function import($company)
     {
 

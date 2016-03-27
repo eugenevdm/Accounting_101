@@ -56,12 +56,12 @@
                 </thead>
                 @foreach ($invoiceitems as $invoiceitem)
                     <tr>
+
                         <td>{{ $invoiceitem->invoice->CustomerName }}</td>
 
-                        <td>{{ $invoiceitem->item['Code'] }} </td>
+                        <td>{{ is_object($invoiceitem->item) ? $invoiceitem->item->Code : "" }} </td>
 
-                        <td>{{ $invoiceitem->item['Code'] }} </td>
-                        <td>{{ $invoiceitem->item['CategoryId'] }} </td>
+                        <td>{{ $invoiceitem->item->category->Description or "" }} </td>
 
                         <td>{{ $invoiceitem->Description}}</td>
                         <td>{{ $invoiceitem->Exclusive}}</td>
@@ -71,12 +71,12 @@
                         <td>{{ $invoiceitem->invoice->AmountDue }}</td>
                         <td>{{ $invoiceitem->invoice->DueDate }}</td>
 
-                        <td>{{ is_object($invoiceitem->invoice->customer->category) ? $invoiceitem->invoice->customer->category->Description : "" }}</td>
+                        <td>{{ $invoiceitem->invoice->customer->category->Description or "" }}</td>
 
-                        <td>{{ $invoiceitem->invoice->customer->Balance  }}</td>
-                        <td>{{ $invoiceitem->invoice->customer->Telephone  }}</td>
-                        <td>{{ $invoiceitem->invoice->customer->Mobile  }}</td>
-                        <td>{{ $invoiceitem->invoice->customer->Email  }}</td>
+                        <td>{{ $invoiceitem->invoice->customer->Balance or "" }}</td>
+                        <td>{{ $invoiceitem->invoice->customer->Telephone or "" }}</td>
+                        <td>{{ $invoiceitem->invoice->customer->Mobile or "" }}</td>
+                        <td>{{ $invoiceitem->invoice->customer->Email or "" }}</td>
 
                         <td>{{ is_object($invoiceitem->analysiscategory1) ? $invoiceitem->analysiscategory1->Description : "" }}</td>
                         <td>{{ is_object($invoiceitem->analysiscategory2) ? $invoiceitem->analysiscategory2->Description : "" }}</td>
