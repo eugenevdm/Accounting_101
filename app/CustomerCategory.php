@@ -1,0 +1,47 @@
+<?php
+
+namespace App;
+
+use App\Sage\SageoneApi;
+use App\Sageone\Api;
+use Illuminate\Database\Eloquent\Model;
+
+class CustomerCategory extends CompanyBaseModel
+{
+    protected $guarded = [];
+
+    public function customers()
+    {
+        return $this->hasMany('App\Customer', 'ID');
+    }
+
+    public static function import(Company $company)
+    {
+
+        CustomerCategory::current($company->id)->delete();
+
+        $response = Api::apiCall("CustomerCategory/Get",$company);
+
+        if ($response['status'] == 'error') {
+
+            return $response;
+
+        } else {
+
+            foreach ($response['results']->Results as $item) {
+                $newItem = new CustomerCategory();
+                $item->company_id = $company->id;
+                $newItem->fill((array)$item);
+                $newItem->save();
+            }
+
+            return [
+                'status'  => 'success',
+                'results' => count($response['results']->Results) . ' records imported.'
+            ];
+
+        }
+
+    }
+
+}

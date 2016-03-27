@@ -1,0 +1,41 @@
+<?php
+
+namespace App;
+
+use App\Sage\SageoneApi;
+use App\Sageone\Api;
+
+class AccountCategory extends CompanyBaseModel
+{
+    protected $guarded = [];
+
+    public static function import(Company $company)
+    {
+
+        AccountCategory::current($company->id)->delete();
+
+        $response = Api::apiCall("AccountCategory/Get",$company);
+
+        if ($response['status'] == 'error') {
+
+            return $response;
+
+        } else {
+
+            foreach ($response['results']->Results as $item) {
+                $newItem = new AccountCategory();
+                $item->company_id = $company->id;
+                $newItem->fill((array)$item);
+                $newItem->save();
+            }
+
+            return [
+                'status'  => 'success',
+                'results' => count($response['results']->Results) . ' records imported.'
+            ];
+
+        }
+
+    }
+
+}

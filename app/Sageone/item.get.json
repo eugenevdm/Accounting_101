@@ -1,0 +1,194 @@
+// Version 1.1.1
+
+{
+  "TotalResults": 1,
+  "ReturnedResults": 2,
+  "Results": [
+    {
+      "Description": "sample string 1",
+      "Category": {
+        "Description": "sample string 1",
+        "ID": 2,
+        "Modified": "2016-03-23",
+        "Created": "2016-03-23"
+      },
+      "Code": "sample string 2",
+      "Active": true,
+      "PriceInclusive": 4.0,
+      "PriceExclusive": 5.0,
+      "Physical": true,
+      "TaxTypeIdSales": 1,
+      "TaxTypeSales": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "TaxTypeIdPurchases": 1,
+      "TaxTypePurchases": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "LastCost": 7.0,
+      "AverageCost": 8.0,
+      "QuantityOnHand": 1.0,
+      "HasAttachments": true,
+      "HasActivity": true,
+      "Unit": "sample string 10",
+      "ItemReportingGroupId_Sales": 1,
+      "ItemReportingGroupSales": {
+        "ID": 2,
+        "Name": "sample string 3",
+        "ItemReportingGroupTypeId": 4,
+        "ItemReportingGroupType": "4",
+        "ReportingGroupId": 1
+      },
+      "ItemReportingGroupId_Purchases": 1,
+      "ItemReportingGroupPurchases": {
+        "ID": 2,
+        "Name": "sample string 3",
+        "ItemReportingGroupTypeId": 4,
+        "ItemReportingGroupType": "4",
+        "ReportingGroupId": 1
+      },
+      "TextUserField1": "sample string 12",
+      "TextUserField2": "sample string 13",
+      "TextUserField3": "sample string 14",
+      "NumericUserField1": 1.0,
+      "NumericUserField2": 1.0,
+      "NumericUserField3": 1.0,
+      "DateUserField1": "2016-03-23",
+      "DateUserField2": "2016-03-23",
+      "DateUserField3": "2016-03-23",
+      "YesNoUserField1": true,
+      "YesNoUserField2": true,
+      "YesNoUserField3": true,
+      "Modified": "2016-03-23",
+      "MajorIndustryCodeId": 1,
+      "GPPercentage": 1.0,
+      "GPAmount": 1.0,
+      "ItemReportingGroupPurchasesName": "sample string 3",
+      "ItemReportingGroupSalesName": "sample string 3",
+      "ID": 17,
+      "AdditionalItemPrices": [
+        {
+          "ID": 1,
+          "ItemId": 2,
+          "PriceInclusive": 3.0,
+          "PriceExclusive": 4.0,
+          "AdditionalPriceListId": 5
+        },
+        {
+          "ID": 1,
+          "ItemId": 2,
+          "PriceInclusive": 3.0,
+          "PriceExclusive": 4.0,
+          "AdditionalPriceListId": 5
+        }
+      ]
+    },
+    {
+      "Description": "sample string 1",
+      "Category": {
+        "Description": "sample string 1",
+        "ID": 2,
+        "Modified": "2016-03-23",
+        "Created": "2016-03-23"
+      },
+      "Code": "sample string 2",
+      "Active": true,
+      "PriceInclusive": 4.0,
+      "PriceExclusive": 5.0,
+      "Physical": true,
+      "TaxTypeIdSales": 1,
+      "TaxTypeSales": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "TaxTypeIdPurchases": 1,
+      "TaxTypePurchases": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "LastCost": 7.0,
+      "AverageCost": 8.0,
+      "QuantityOnHand": 1.0,
+      "HasAttachments": true,
+      "HasActivity": true,
+      "Unit": "sample string 10",
+      "ItemReportingGroupId_Sales": 1,
+      "ItemReportingGroupSales": {
+        "ID": 2,
+        "Name": "sample string 3",
+        "ItemReportingGroupTypeId": 4,
+        "ItemReportingGroupType": "4",
+        "ReportingGroupId": 1
+      },
+      "ItemReportingGroupId_Purchases": 1,
+      "ItemReportingGroupPurchases": {
+        "ID": 2,
+        "Name": "sample string 3",
+        "ItemReportingGroupTypeId": 4,
+        "ItemReportingGroupType": "4",
+        "ReportingGroupId": 1
+      },
+      "TextUserField1": "sample string 12",
+      "TextUserField2": "sample string 13",
+      "TextUserField3": "sample string 14",
+      "NumericUserField1": 1.0,
+      "NumericUserField2": 1.0,
+      "NumericUserField3": 1.0,
+      "DateUserField1": "2016-03-23",
+      "DateUserField2": "2016-03-23",
+      "DateUserField3": "2016-03-23",
+      "YesNoUserField1": true,
+      "YesNoUserField2": true,
+      "YesNoUserField3": true,
+      "Modified": "2016-03-23",
+      "MajorIndustryCodeId": 1,
+      "GPPercentage": 1.0,
+      "GPAmount": 1.0,
+      "ItemReportingGroupPurchasesName": "sample string 3",
+      "ItemReportingGroupSalesName": "sample string 3",
+      "ID": 17,
+      "AdditionalItemPrices": [
+        {
+          "ID": 1,
+          "ItemId": 2,
+          "PriceInclusive": 3.0,
+          "PriceExclusive": 4.0,
+          "AdditionalPriceListId": 5
+        },
+        {
+          "ID": 1,
+          "ItemId": 2,
+          "PriceInclusive": 3.0,
+          "PriceExclusive": 4.0,
+          "AdditionalPriceListId": 5
+        }
+      ]
+    }
+  ]
+}

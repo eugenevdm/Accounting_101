@@ -1,0 +1,68 @@
+{
+  "TotalResults": 1,
+  "ReturnedResults": 2,
+  "Results": [
+    {
+      "Name": "sample string 2",
+      "Category": {
+        "Comment": "sample string 1",
+        "Description": "sample string 7",
+        "ID": 8,
+        "Modified": "2016-03-23",
+        "Created": "2016-03-23"
+      },
+      "Active": true,
+      "Balance": 4.0,
+      "Description": "sample string 5",
+      "UnallocatedAccount": true,
+      "IsTaxLocked": true,
+      "Modified": "2016-03-23",
+      "Created": "2016-03-23",
+      "AccountType": 9,
+      "HasActivity": true,
+      "DefaultTaxTypeId": 1,
+      "DefaultTaxType": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "ID": 11
+    },
+    {
+      "Name": "sample string 2",
+      "Category": {
+        "Comment": "sample string 1",
+        "Description": "sample string 7",
+        "ID": 8,
+        "Modified": "2016-03-23",
+        "Created": "2016-03-23"
+      },
+      "Active": true,
+      "Balance": 4.0,
+      "Description": "sample string 5",
+      "UnallocatedAccount": true,
+      "IsTaxLocked": true,
+      "Modified": "2016-03-23",
+      "Created": "2016-03-23",
+      "AccountType": 9,
+      "HasActivity": true,
+      "DefaultTaxTypeId": 1,
+      "DefaultTaxType": {
+        "ID": 1,
+        "Name": "sample string 2",
+        "Percentage": 3.1,
+        "IsDefault": true,
+        "HasActivity": true,
+        "IsManualTax": true,
+        "Created": "2016-03-23",
+        "Modified": "2016-03-23"
+      },
+      "ID": 11
+    }
+  ]
+}
