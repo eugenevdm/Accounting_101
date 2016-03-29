@@ -22,6 +22,8 @@ class Account extends CompanyBaseModel
 
         $response = Api::apiCall("Account/Get",$company);
 
+        //dd($response);
+
         if ($response['status'] == 'error') {
 
             return $response;

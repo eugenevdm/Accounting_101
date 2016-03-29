@@ -57,6 +57,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
+    Route::get('import/{module}', 'ImportController@import');
+
+    Route::resource('invoice','InvoicesController');
+
     Route::resource('item','ItemController');
 
     Route::controller('items', 'ItemController', [
@@ -66,11 +70,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('itemcategory','ItemCategoryController');
 
-    Route::get('import/{module}', 'ImportController@import');
+    Route::get('trialbalance/choose', 'TrialBalanceController@choose');
+    Route::resource('trialbalance','TrialBalanceController');
 
     Route::resource('settings','SettingsController');
-
-    Route::resource('invoice','InvoicesController');
-
 
 });

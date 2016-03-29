@@ -8,6 +8,7 @@
         {!! Form::checkbox('sync') !!}
 
     </div>
+
 </div>
 
 <div class="col-md-6 col-md-offset-4">

@@ -22,34 +22,34 @@ class ImportController extends Controller
 
         switch ($module) {
             case 'accounts' :
-                $result = Account::import($this->company->id);
+                $result = Account::import($this->company);
                 break;
             case 'accountcategories' :
-                $result = AccountCategory::import($this->company->id);
+                $result = AccountCategory::import($this->company);
                 break;
             case 'analysiscategories' :
-                $result = AnalysisCategory::import($this->company->id);
+                $result = AnalysisCategory::import($this->company);
                 break;
             case 'analysistypes' :
-                $result = AnalysisType::import($this->company->id);
+                $result = AnalysisType::import($this->company);
                 break;
             case 'companies' :
                 $result = Company::import();
                 break;
             case 'customers' :
-                $result = Customer::import($this->company->id);
+                $result = Customer::import($this->company);
                 break;
             case 'customercategories' :
-                $result = CustomerCategory::import($this->company->id);
+                $result = CustomerCategory::import($this->company);
                 break;
             case 'items' :
-                $result = Item::import($this->company->id);
+                $result = Item::import($this->company);
                 break;
             case 'itemcategories' :
-                $result = ItemCategory::import($this->company->id);
+                $result = ItemCategory::import($this->company);
                 break;
             case 'taxinvoices' :
-                $result = Invoice::import($this->company->id);
+                $result = Invoice::import($this->company);
                 break;
             default :
                 $result = "Error: Unknown import module '$module'.'";

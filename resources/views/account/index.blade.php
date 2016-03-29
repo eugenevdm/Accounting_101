@@ -26,7 +26,7 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>CategoryId</th>
+                    <th>Category</th>
                     <th>Active</th>
                     <th>Balance</th>
                     <th>AccountType</th>
