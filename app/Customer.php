@@ -27,30 +27,39 @@ class Customer extends CompanyBaseModel
 
         $response = Api::apiCall("Customer/Get",$company);
 
+        //dd($response);
+
         if ($response['status'] == 'error') {
 
             return $response;
 
         } else {
 
-            foreach ($response['results']->Results as $item) {
-                $newItem = new Customer();
-                if (isset($item->Category)) {
-                    $item->CategoryId = $item->Category->ID;
-                } else {
-                    $item->CategoryId = null;
-                }
-                unset($item->Category);
-                $item->company_id = $company->id;
-                $newItem->fill((array)$item);
-                $newItem->save();
-            }
+            self::store($response['results'], $company);
 
             return [
                 'status'  => 'success',
                 'results' => count($response['results']->Results) . ' records imported.'
             ];
 
+        }
+
+    }
+
+    public static function store($results, Company $company)
+    {
+        //dd($results);
+        foreach ($results->Results as $item) {
+            $newItem = new self();
+            if (isset($item->Category)) {
+                $item->CategoryId = $item->Category->ID;
+            } else {
+                $item->CategoryId = null;
+            }
+            unset($item->Category);
+            $item->company_id = $company->id;
+            $newItem->fill((array)$item);
+            $newItem->save();
         }
 
     }

@@ -28,18 +28,25 @@ class ItemCategory extends CompanyBaseModel
 
         } else {
 
-            foreach ($response['results']->Results as $item) {
-                $newItem = new ItemCategory();
-                $item->company_id = $company->id;
-                $newItem->fill((array)$item);
-                $newItem->save();
-            }
+            self::store($response['results']->Results, $company);
 
             return [
                 'status'  => 'success',
                 'results' => count($response['results']->Results) . ' records imported.'
             ];
 
+        }
+
+    }
+
+    public static function store($results, Company $company)
+    {
+        foreach ($results->Results as $item) {
+            $newItem = new self();
+            unset($item->AnalysisCategories);
+            $item->company_id = $company->id;
+            $newItem->fill((array)$item);
+            $newItem->save();
         }
 
     }

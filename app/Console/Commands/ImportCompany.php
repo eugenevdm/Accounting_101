@@ -2,17 +2,21 @@
 
 namespace App\Console\Commands;
 
-use App\Account;
-use App\AnalysisCategory;
-use App\AnalysisType;
-use App\Company;
-use App\Customer;
-use App\Invoice;
+use App\ApiParams;
 use App\Item;
+use App\Account;
+use App\Company;
+use App\Invoice;
+use App\Customer;
+use App\ApiCommand;
+use App\Sageone\Api;
+use App\AnalysisType;
 use App\ItemCategory;
 use App\Snowball\Utils;
 use App\AccountCategory;
+use App\AnalysisCategory;
 use App\CustomerCategory;
+use App\Jobs\RetrieveApiData;
 use Illuminate\Console\Command;
 
 class ImportCompany extends Command
@@ -49,7 +53,32 @@ class ImportCompany extends Command
     {
         $companies = Company::where('sync',1)->get();
         foreach ($companies as $company) {
-            $this->import($company);
+            //$this->import($company);
+            $this->getApiTotals($company);
+        }
+    }
+
+    private function getApiTotals($company) {
+        $apiCommands = ApiCommand::where('cron_include',true)->orderBy('cron_order')->get();
+        foreach($apiCommands as $apiCommand) {
+            $totalResults = Api::getTotalResults($apiCommand, $company);
+            Utils::decho("TotalResults: " . $totalResults);
+            if ($apiCommand->last_total_results <> $totalResults) {
+
+                $api_params = new ApiParams();
+                $api_params->api_command = $apiCommand->command;
+                $api_params->total_results = $totalResults;
+                $api_params->skip = $apiCommand->last_total_results;
+                $api_params->top = config('sageoneapi.max_results');
+                $api_params->company_id = $company->id;
+                $api_params->status = 'unprocessed';
+                $api_params->save();
+
+                dispatch(new RetrieveApiData($apiCommand, $company));
+
+            }
+            // Check last_total_results <> current_total_results;
+
         }
     }
 

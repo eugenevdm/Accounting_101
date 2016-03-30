@@ -87,7 +87,7 @@
             </table>
         </div>
 
-        {{--{!! str_replace('/?', '?', $invoiceitems->render()) !!}<br>--}}
+        {!! str_replace('/?', '?', $invoiceitems->render()) !!}<br>
 
     @endif
 

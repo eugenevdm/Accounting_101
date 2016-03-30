@@ -36,7 +36,7 @@
             </table>
         </div>
 
-        {{--{!! str_replace('/?', '?', $categories->render()) !!}<br>--}}
+        {!! str_replace('/?', '?', $categories->render()) !!}<br>
 
     @endif
 

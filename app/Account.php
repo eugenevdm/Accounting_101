@@ -22,32 +22,36 @@ class Account extends CompanyBaseModel
 
         $response = Api::apiCall("Account/Get",$company);
 
-        //dd($response);
-
         if ($response['status'] == 'error') {
 
             return $response;
 
         } else {
 
-            foreach ($response['results']->Results as $item) {
-                $newItem = new Account();
-                if (isset($item->Category)) {
-                    $item->CategoryId = $item->Category->ID;
-                } else {
-                    $item->CategoryId = null;
-                }
-                unset($item->Category);
-                $item->company_id = $company->id;
-                $newItem->fill((array)$item);
-                $newItem->save();
-            }
+            self::store($response['results']->Results, $company);
 
             return [
                 'status'  => 'success',
                 'results' => count($response['results']->Results) . ' records imported.'
             ];
 
+        }
+
+    }
+
+    public static function store($results, Company $company)
+    {
+        foreach ($results->Results as $item) {
+            $newItem = new self();
+            if (isset($item->Category)) {
+                $item->CategoryId = $item->Category->ID;
+            } else {
+                $item->CategoryId = null;
+            }
+            unset($item->Category);
+            $item->company_id = $company->id;
+            $newItem->fill((array)$item);
+            $newItem->save();
         }
 
     }

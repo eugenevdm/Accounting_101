@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ApiParams;
 use App\Item;
 use App\Account;
 use App\Company;
@@ -13,6 +14,9 @@ use App\Http\Requests;
 use App\AccountCategory;
 use App\AnalysisCategory;
 use App\CustomerCategory;
+use App\Jobs\RetrieveApiData;
+use App\Sageone\Api;
+use App\Snowball\Utils;
 
 class ImportController extends Controller
 {
@@ -22,6 +26,35 @@ class ImportController extends Controller
 
         switch ($module) {
             case 'accounts' :
+                //Account::current($company->id)->delete();
+                $api_command = "Item/Get";
+                $response = Api::apiCall($api_command, $this->company);
+                //dd($response);
+                if ($response['status'] == 'error') {
+                    return $response;
+                }
+
+                $results = $response['results'];
+                Utils::ddecho("Total Results: " . $results->TotalResults);
+                Utils::ddecho("Returned Results: " . $results->ReturnedResults);
+
+                // Store data
+                Item::store($results, $this->company);
+
+                if ($results->TotalResults > $results->ReturnedResults) {
+                    $api_params = new ApiParams();
+                    $api_params->api_command = $api_command;
+                    $api_params->total_results = $results->TotalResults;
+                    $api_params->skip = 100;
+                    $api_params->top = 100;
+                    $api_params->company_id = $this->company->id;
+                    $api_params->status = 'unprocessed';
+                    $api_params->save();
+                    $this->dispatch(new RetrieveApiData($api_command, $this->company));
+                }
+                $result = "Queued";
+                break;
+            case 'accounts2' :
                 $result = Account::import($this->company);
                 break;
             case 'accountcategories' :

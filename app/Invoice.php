@@ -34,23 +34,27 @@ class Invoice extends CompanyBaseModel
 
         } else {
 
-            foreach ($response['results']->Results as $item) {
-                $newItem = new Invoice();
-
-                unset($item->SalesRepresentative);
-
-                InvoiceItem::import($item->ID, $item->Lines, $company->id);
-                unset($item->Lines);
-
-                $newItem->fill((array)$item);
-                $newItem->save();
-            }
+            self::store($response['results'], $company);
 
             return [
                 'status'  => 'success',
                 'results' => count($response['results']->Results) . ' records imported.'
             ];
 
+        }
+
+    }
+
+    public static function store($results, Company $company)
+    {
+        foreach ($results->Results as $item) {
+            $newItem = new Invoice();
+            unset($item->SalesRepresentative);
+            InvoiceItem::import($item->ID, $item->Lines, $company->id);
+            unset($item->Lines);
+            $item->company_id = $company->id;
+            $newItem->fill((array)$item);
+            $newItem->save();
         }
 
     }

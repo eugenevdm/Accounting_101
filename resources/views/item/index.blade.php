@@ -56,7 +56,7 @@
             </table>
         </div>
 
-        {{--{!! str_replace('/?', '?', $items->render()) !!}<br>--}}
+        {!! str_replace('/?', '?', $items->render()) !!}<br>
 
     @endif
 

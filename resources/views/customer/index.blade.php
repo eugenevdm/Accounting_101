@@ -52,7 +52,7 @@
             </table>
         </div>
 
-        {{--{!! str_replace('/?', '?', $customers->render()) !!}<br>--}}
+        {!! str_replace('/?', '?', $customers->render()) !!}<br>
 
     @endif
 
