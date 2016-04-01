@@ -26,6 +26,7 @@
                     <!-- Left Side Of Navbar -->
 
             <ul class="nav navbar-nav">
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false">Home <span class="caret"></span></a>
@@ -81,25 +82,31 @@
             </ul>
 
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Company <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+
+                <li class="menu-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
                         <li><a href="{{ url('company') }}">Open and Manage Companies</a></li>
                         <li><a href="{{ url('settings') }}">Change API Settings</a></li>
                         <li><a href="{{ url('analysiscode') }}">Analysis Codes</a></li>
-                        <li><a href="{{ url('import/accounts') }}">Import Accounts</a></li>
-                        <li><a href="{{ url('import/accountcategories') }}">Import Account Categories</a></li>
-                        <li><a href="{{ url('import/analysiscategories') }}">Import Analysis Categories</a></li>
-                        <li><a href="{{ url('import/analysistypes') }}">Import Analysis Types</a></li>
-                        <li><a href="{{ url('import/companies') }}">Import Companies</a></li>
-                        <li><a href="{{ url('import/customers') }}">Import Customers</a></li>
-                        <li><a href="{{ url('import/customercategories') }}">Import Customer Categories</a></li>
-                        <li><a href="{{ url('import/items') }}">Import Items</a></li>
-                        <li><a href="{{ url('import/itemcategories') }}">Import Item Categories</a></li>
-                        <li><a href="{{ url('import/taxinvoices') }}">Import Tax Invoices</a></li>
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Import</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('import/accounts') }}">Import Accounts</a></li>
+                                <li><a href="{{ url('import/accountcategories') }}">Import Account Categories</a></li>
+                                <li><a href="{{ url('import/analysiscategories') }}">Import Analysis Categories</a></li>
+                                <li><a href="{{ url('import/analysistypes') }}">Import Analysis Types</a></li>
+                                <li><a href="{{ url('import/companies') }}">Import Companies</a></li>
+                                <li><a href="{{ url('import/customers') }}">Import Customers</a></li>
+                                <li><a href="{{ url('import/customercategories') }}">Import Customer Categories</a></li>
+                                <li><a href="{{ url('import/items') }}">Import Items</a></li>
+                                <li><a href="{{ url('import/itemcategories') }}">Import Item Categories</a></li>
+                                <li><a href="{{ url('import/taxinvoices') }}">Import Tax Invoices</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                
             </ul>
 
             @endif

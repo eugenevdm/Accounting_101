@@ -51,6 +51,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
     <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
 
+    <!-- Submenu -->
+    <!-- See http://stackoverflow.com/questions/18023493/bootstrap-3-dropdown-sub-menu-missing -->
+    <link href="{{ asset('css/submenu.css') }}" rel="stylesheet">
+    {!! Html::script('js/submenu.js') !!}
 
     {{--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>--}}
 
