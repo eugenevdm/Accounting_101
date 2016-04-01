@@ -55,9 +55,11 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('customercategory','CustomerCategoryController');
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('dashboard/{module}','DashboardController@show');
 
-    Route::get('import/{module}', 'ImportController@import');
+    Route::get('/home','HomeController@index');
+
+    Route::get('import/{module}','ImportController@import');
 
     Route::resource('invoice','InvoicesController');
 
@@ -70,8 +72,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('itemcategory','ItemCategoryController');
 
-    Route::get('trialbalance/choose', 'TrialBalanceController@choose');
+    Route::get('trialbalance/choose','TrialBalanceController@choose');
     Route::resource('trialbalance','TrialBalanceController');
+
+    Route::resource('salesrep','SalesRepController');
 
     Route::resource('settings','SettingsController');
 

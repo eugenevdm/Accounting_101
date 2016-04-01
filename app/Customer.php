@@ -2,18 +2,21 @@
 
 namespace App;
 
-use App\Sage\SageoneApi;
 use App\Sageone\Api;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Customer extends CompanyBaseModel
 {
     protected $guarded = [];
 
+    protected $appends = ['balance'];
+
     public function category()
     {
         return $this->belongsTo('App\CustomerCategory', 'CategoryId');
+    }
+
+    public function getOutstandingAttribute() {
+        return money_format("%n", $this->Balance);
     }
 
     public function getNomAttribute() {

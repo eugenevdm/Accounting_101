@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
 
         $filePath = "/var/www/html/acc101/public/schedule_output.txt";
 
-        $schedule->command('company:import')->everyThirtyMinutes()->name('master_schedule')->withoutOverlapping()->appendOutputTo($filePath);
+        $schedule->command('company:import')->everyMinute()->name('master_schedule')->withoutOverlapping()->appendOutputTo($filePath);
     //})->everyFiveMinutes()->name('master_schedule')->withoutOverlapping()->appendOutputTo($filePath);
     }
 

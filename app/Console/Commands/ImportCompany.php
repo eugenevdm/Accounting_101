@@ -77,8 +77,6 @@ class ImportCompany extends Command
                 dispatch(new RetrieveApiData($apiCommand, $company));
 
             }
-            // Check last_total_results <> current_total_results;
-
         }
     }
 
