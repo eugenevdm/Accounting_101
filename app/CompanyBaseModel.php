@@ -13,15 +13,15 @@ class CompanyBaseModel extends Model {
         return $query->where('company_id', $company_id);
     }
 
-    public static function store($results, Company $company)
-    {
-        foreach ($results->Results as $item) {
-            $newItem = new self();
-            $item->company_id = $company->id;
-            $newItem->fill((array)$item);
-            $newItem->save();
-        }
-
-    }
+//    public static function store($results, Company $company, $class)
+//    {
+//        foreach ($results->Results as $item) {
+//            $newItem = new $class;
+//            $item->company_id = $company->id;
+//            $newItem->fill((array)$item);
+//            $newItem->save();
+//        }
+//
+//    }
 
 }

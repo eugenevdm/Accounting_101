@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SalesRep extends Model
+class SalesRep extends CompanyBaseModel
 {
 
     protected $guarded = [];
