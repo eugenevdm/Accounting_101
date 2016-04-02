@@ -20,7 +20,8 @@ class CustomerController extends Controller
     }
 
     public function index() {
-        $customers = Customer::where('company_id',$this->company->id)->paginate(100);
+        //dd($this->company_id)
+        $customers = Customer::current($this->company->id)->paginate(100);
         //dd($customers);
         return view('customer.index', compact('customers'));
     }

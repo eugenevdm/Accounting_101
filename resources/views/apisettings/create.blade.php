@@ -21,8 +21,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            {!! Form::open(['action' => 'SettingsController@store','class' => 'form-horizontal']) !!}
-            @include('settings/partials/_form', ['submit_text' => 'Update Settings'])
+            {!! Form::open(['action' => 'ApiSettingsController@store','class' => 'form-horizontal']) !!}
+            @include('apisettings/partials/_form', ['submit_text' => 'Update API Settings'])
             {!! Form::close() !!}
 
             @include('errors')

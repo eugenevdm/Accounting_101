@@ -18,8 +18,8 @@ class TrialBalanceController extends Controller
         return view('trialbalance.index', compact('trialbalance','fromDate','toDate'));
     }
 
-    public function choose() {
-        return view('trialbalance.choose');
+    public function select() {
+        return view('trialbalance.select');
     }
 
     /**
@@ -30,12 +30,8 @@ class TrialBalanceController extends Controller
     public function store()
     {
         $input = Input::all();
-        //var_dump($input);
-        //dd($input);
+
         if ($input['Comparative'] == "1") $input['Comparative'] = true;
-//        echo "<pre>";
-//        var_dump($input);
-//        echo "</pre>";
 
         $fromDate = $input['FromDate'];
         $toDate   = $input['ToDate'];
@@ -52,8 +48,6 @@ class TrialBalanceController extends Controller
         ];
 
         $response = Api::post('TrialBalance/Export', $this->company, $post, null, true);
-
-        //dd($response);
 
         TrialBalance::import($this->company, $response);
 

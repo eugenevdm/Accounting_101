@@ -10,6 +10,11 @@ class Account extends CompanyBaseModel
 
     protected $guarded = [];
 
+    public function getCurrentBalanceAttribute()
+    {
+        return money_format("%n", $this->Balance);
+    }
+
     public function category()
     {
         return $this->belongsTo('App\AccountCategory', 'CategoryId');

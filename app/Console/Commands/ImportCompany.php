@@ -53,16 +53,18 @@ class ImportCompany extends Command
     {
         $companies = Company::where('sync',1)->get();
         foreach ($companies as $company) {
-            //$this->import($company);
             $this->getApiTotals($company);
         }
     }
 
     private function getApiTotals($company) {
-        $apiCommands = ApiCommand::where('cron_include',true)->orderBy('cron_order')->get();
+        $apiCommands = ApiCommand::where('cron_include', true)->orderBy('cron_order')->get();
         foreach($apiCommands as $apiCommand) {
+
             $totalResults = Api::getTotalResults($apiCommand, $company);
+
             Utils::decho("TotalResults: " . $totalResults);
+
             if ($apiCommand->last_total_results <> $totalResults) {
 
                 $api_params = new ApiParams();
@@ -77,6 +79,7 @@ class ImportCompany extends Command
                 dispatch(new RetrieveApiData($apiCommand, $company));
 
             }
+
         }
     }
 

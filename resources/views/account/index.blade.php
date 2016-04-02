@@ -37,8 +37,8 @@
                         <td>{{ $account->Name}}</td>
                         <td>{{ $account->category->Description }}</td>
                         <td>{{ $account->Active}}</td>
-                        <td>{{ $account->Balance }}</td>
-                        <td>{{ $account->AccountType }}</td>
+                        <td align="right">{{ $account->current_balance }}</td>
+                        <td align="center">{{ $account->AccountType }}</td>
                     </tr>
                 @endforeach
             </table>

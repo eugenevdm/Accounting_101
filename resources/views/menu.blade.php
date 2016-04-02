@@ -38,16 +38,40 @@
 
 
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Customers <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('customer') }}">List of Customers</a></li>
-                        <li><a href="{{ url('salesrep') }}">List of Sales Reps</a></li>
-                        <li><a href="{{ url('customercategory') }}">Customer Categories</a></li>
-                        <li><a href="{{ url('invoice') }}">Customer Tax Invoices</a></li>
+
+                <li class="menu-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists</a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="{{ url('customer') }}">List of Customers</a></li>
+                                <li><a href="{{ url('salesrep') }}">List of Sales Reps</a></li>
+                                <li><a href="{{ url('customercategory') }}">Customer Categories</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('invoice') }}">Customer Tax Invoices</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('customerageing') }}">Customer Balances - Days Outstanding</a></li>
+                                <li><a href="{{ url('customerageing/select') }}">Create Customer Ageing Report</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
+
             </ul>
 
             <ul class="nav navbar-nav">
@@ -57,6 +81,17 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ url('item') }}">List of Items</a></li>
                         <li><a href="{{ url('itemcategory') }}">Item Categories</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">Banking <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('bankaccount') }}">List of Banks and Credit Cards</a></li>
+                        <li><a href="{{ url('bankaccountcategory') }}">Bank and Credit Card Categories</a></li>
                     </ul>
                 </li>
             </ul>
@@ -76,7 +111,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false">Accountant's Area<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('trialbalance/choose') }}">Trial Balance</a></li>
+                        <li><a href="{{ url('trialbalance/select') }}">Trial Balance</a></li>
                     </ul>
                 </li>
             </ul>
@@ -87,8 +122,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url('company') }}">Open and Manage Companies</a></li>
-                        <li><a href="{{ url('settings') }}">Change API Settings</a></li>
+
                         <li><a href="{{ url('analysiscode') }}">Analysis Codes</a></li>
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">API</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('apisettings') }}">Change API Settings</a></li>
+                                <li><a href="{{ url('apicommands') }}">API Commands</a></li>
+                            </ul>
+                        </li>
+
                         <li class="menu-item dropdown dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Import</a>
                             <ul class="dropdown-menu">
@@ -97,6 +141,7 @@
                                 <li><a href="{{ url('import/analysiscategories') }}">Import Analysis Categories</a></li>
                                 <li><a href="{{ url('import/analysistypes') }}">Import Analysis Types</a></li>
                                 <li><a href="{{ url('import/companies') }}">Import Companies</a></li>
+                                <li><a href="{{ url('import/customerageing') }}">Import Customer Ageing</a></li>
                                 <li><a href="{{ url('import/customers') }}">Import Customers</a></li>
                                 <li><a href="{{ url('import/customercategories') }}">Import Customer Categories</a></li>
                                 <li><a href="{{ url('import/items') }}">Import Items</a></li>
@@ -106,12 +151,13 @@
                         </li>
                     </ul>
                 </li>
-                
+
             </ul>
 
             @endif
 
                     <!-- Right Side Of Navbar -->
+
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())

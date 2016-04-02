@@ -11,7 +11,7 @@ class SalesRepController extends Controller
 {
 
     public function index() {
-        $salesreps = SalesRep::paginate(25);
+        $salesreps = SalesRep::current($this->company->id)->paginate(25);
         return view('salesrep.index', compact('salesreps'));
     }
 

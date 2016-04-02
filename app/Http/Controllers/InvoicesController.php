@@ -10,9 +10,10 @@ class InvoicesController extends Controller
 
     public function index()
     {
+
         $invoiceitems = InvoiceItem::current($this->company->id)->paginate(100);
-        //dd($invoiceitems);
         return view('invoice.index', compact('invoiceitems'));
+
     }
 
 }

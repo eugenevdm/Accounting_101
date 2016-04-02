@@ -15,11 +15,13 @@ class Customer extends CompanyBaseModel
         return $this->belongsTo('App\CustomerCategory', 'CategoryId');
     }
 
-    public function getOutstandingAttribute() {
+    public function getOutstandingAttribute()
+    {
         return money_format("%n", $this->Balance);
     }
 
-    public function getNomAttribute() {
+    public function getNomAttribute()
+    {
         return $this->Name;
     }
 
@@ -28,9 +30,7 @@ class Customer extends CompanyBaseModel
 
         Customer::current($company->id)->delete();
 
-        $response = Api::apiCall("Customer/Get",$company);
-
-        //dd($response);
+        $response = Api::apiCall("Customer/Get", $company);
 
         if ($response['status'] == 'error') {
 
@@ -51,8 +51,9 @@ class Customer extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
-        //dd($results);
+
         foreach ($results->Results as $item) {
+
             $newItem = new self();
             if (isset($item->Category)) {
                 $item->CategoryId = $item->Category->ID;
@@ -63,6 +64,7 @@ class Customer extends CompanyBaseModel
             $item->company_id = $company->id;
             $newItem->fill((array)$item);
             $newItem->save();
+
         }
 
     }

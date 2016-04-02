@@ -28,7 +28,7 @@ class ImportController extends Controller
             case 'accounts' :
                 //Account::current($company->id)->delete();
                 $api_command = "Item/Get";
-                $response = Api::apiCall($api_command, $this->company);
+                $response    = Api::apiCall($api_command, $this->company);
                 //dd($response);
                 if ($response['status'] == 'error') {
                     return $response;
@@ -42,16 +42,17 @@ class ImportController extends Controller
                 Item::store($results, $this->company);
 
                 if ($results->TotalResults > $results->ReturnedResults) {
-                    $api_params = new ApiParams();
-                    $api_params->api_command = $api_command;
+                    $api_params                = new ApiParams();
+                    $api_params->api_command   = $api_command;
                     $api_params->total_results = $results->TotalResults;
-                    $api_params->skip = 100;
-                    $api_params->top = 100;
-                    $api_params->company_id = $this->company->id;
-                    $api_params->status = 'unprocessed';
+                    $api_params->skip          = 100;
+                    $api_params->top           = 100;
+                    $api_params->company_id    = $this->company->id;
+                    $api_params->status        = 'unprocessed';
                     $api_params->save();
                     $this->dispatch(new RetrieveApiData($api_command, $this->company));
                 }
+
                 $result = "Queued";
                 break;
             case 'accounts2' :
@@ -68,6 +69,55 @@ class ImportController extends Controller
                 break;
             case 'companies' :
                 $result = Company::import();
+                break;
+            case 'customerageing' :
+
+                $api_command = "CustomerAgeing/GetDetail";
+
+                $post = [
+
+                    "ToDate"             => "2016-04-02",
+                    "FromCustomer"       => "",
+                    "ToCustomer"         => "",
+                    "FromCategory"       => "",
+                    "ToCategory"         => "",
+                    "Summary"            => "1",
+                    "ExcludeZeroBalance" => "0",
+                    "IncludeActive"      => true,
+                    "IncludeInactive"    => true,
+                    "BasedOnDueDate"     => true,
+                    "UseForeignCurrency" => true,
+
+                ];
+
+                $response = Api::apiCall2($api_command, $this->company, $post);
+                //dd($response);
+                if ($response['status'] == 'error') {
+                    return $response;
+                }
+
+                $results = $response['results'];
+                Utils::ddecho("Total Results: " . $results->TotalResults);
+                Utils::ddecho("Returned Results: " . $results->ReturnedResults);
+
+                dd($results);
+
+                // Store data
+                Item::store($results, $this->company);
+
+                if ($results->TotalResults > $results->ReturnedResults) {
+                    $api_params                = new ApiParams();
+                    $api_params->api_command   = $api_command;
+                    $api_params->total_results = $results->TotalResults;
+                    $api_params->skip          = 100;
+                    $api_params->top           = 100;
+                    $api_params->company_id    = $this->company->id;
+                    $api_params->status        = 'unprocessed';
+                    $api_params->save();
+                    $this->dispatch(new RetrieveApiData($api_command, $this->company));
+                }
+
+                $result = "Queued";
                 break;
             case 'customers' :
                 $result = Customer::import($this->company);

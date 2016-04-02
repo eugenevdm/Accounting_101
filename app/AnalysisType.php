@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Sage\SageoneApi;
 use App\Sageone\Api;
 
 class AnalysisType extends CompanyBaseModel
@@ -38,6 +37,7 @@ class AnalysisType extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
+
         foreach ($results->Results as $item) {
             $newItem = new self();
             unset($item->AnalysisCategories);

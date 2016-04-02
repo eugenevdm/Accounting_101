@@ -12,7 +12,6 @@
 */
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -40,6 +39,11 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('analysiscode','AnalysisCodeController');
 
+    Route::resource('apisettings','ApiSettingsController');
+
+    Route::resource('bankaccount','BankAccountController');
+    Route::resource('bankaccountcategory','BankAccountCategoryController');
+
     Route::resource('company','CompanyController');
 
     Route::get('company/{id}/select', [
@@ -52,6 +56,9 @@ Route::group(['middleware' => 'web'], function () {
 //        'anyData'  => 'datatables.data',
 //        'getIndex' => 'datatables',
 //    ]);
+
+    Route::get('customerageing/select','CustomerAgeingController@select');
+    Route::resource('customerageing','CustomerAgeingController');
 
     Route::resource('customercategory','CustomerCategoryController');
 
@@ -72,11 +79,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('itemcategory','ItemCategoryController');
 
-    Route::get('trialbalance/choose','TrialBalanceController@choose');
+    Route::get('trialbalance/select','TrialBalanceController@select');
     Route::resource('trialbalance','TrialBalanceController');
 
     Route::resource('salesrep','SalesRepController');
-
-    Route::resource('settings','SettingsController');
 
 });

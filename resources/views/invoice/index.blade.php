@@ -20,7 +20,7 @@
 
     @if ($invoiceitems->count())
 
-        <div class="table-responsive">
+        <div class="">
 
             <table class="table table-striped table-hover table-condensed">
                 <thead>

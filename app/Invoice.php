@@ -26,8 +26,6 @@ class Invoice extends CompanyBaseModel
 
         $response = Api::apiCall("TaxInvoice/Get?includeDetail=true", $company, true);
 
-        //dd($response);
-
         if ($response['status'] == 'error') {
 
             return $response;
@@ -47,6 +45,7 @@ class Invoice extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
+
         foreach ($results->Results as $item) {
             $newItem = new Invoice();
             unset($item->SalesRepresentative);

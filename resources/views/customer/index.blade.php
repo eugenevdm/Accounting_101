@@ -38,7 +38,6 @@
                 </thead>
                 @foreach ($customers as $customer)
                     <tr>
-                        {{--<td>{{ $customer->ID }}</td>--}}
                         <td>{{ $customer->Name}}</td>
                         <td>{{ is_object($customer->category) ? $customer->category['Description'] : '' }}</td>
                         <td>{{ $customer->ContactName }}</td>
