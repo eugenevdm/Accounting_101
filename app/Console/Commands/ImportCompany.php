@@ -58,10 +58,16 @@ class ImportCompany extends Command
     }
 
     private function getApiTotals($company) {
+
         $apiCommands = ApiCommand::where('cron_include', true)->orderBy('cron_order')->get();
+
         foreach($apiCommands as $apiCommand) {
 
-            $totalResults = Api::getTotalResults($apiCommand, $company);
+            // Bug in API if you specify top=1 for ReportingGroup you get 1 as TotalResults
+            $results = Api::apiCall($apiCommand->command, 0, 100, $company);
+
+            $totalResults = $results->TotalResults;
+//            dd($totalResults);
 
             Utils::decho("TotalResults: " . $totalResults);
 

@@ -13,6 +13,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
         <li>Accounts</li>
+        <li>Lists</li>
         <li class="active">List of Accounts</li>
     </ol>
 

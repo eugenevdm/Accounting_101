@@ -18,7 +18,7 @@ class CustomerAgeing extends CompanyBaseModel
 
         //dd($response);
 
-        foreach ($response->Results as $item) {
+        foreach ($response as $item) {
             $newItem          = new self();
 
             if (isset($item->Customer)) {

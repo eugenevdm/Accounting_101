@@ -39,7 +39,7 @@ class AnalysisCategory extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
-        foreach ($results->Results as $item) {
+        foreach ($results as $item) {
             $newItem = new self();
             $item->company_id = $company->id;
             $newItem->fill((array)$item);

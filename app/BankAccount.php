@@ -11,7 +11,7 @@ class BankAccount extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
-        foreach ($results->Results as $item) {
+        foreach ($results as $item) {
             $newItem = new self();
             if (isset($item->Category)) {
                 $item->CategoryId = $item->Category->ID;

@@ -37,6 +37,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('account','AccountController');
 
+    Route::resource('accountreportinggroup','AccountReportingGroupController');
+
+    Route::resource('accountcategory','AccountCategoryController');
+
     Route::resource('analysiscode','AnalysisCodeController');
 
     Route::resource('apisettings','ApiSettingsController');

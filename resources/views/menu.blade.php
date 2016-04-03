@@ -99,9 +99,21 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Accounts <span class="caret"></span></a>
+                       aria-expanded="false">Accounts<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('account') }}">List of Accounts</a></li>
+
+                        <li><a href="{{ url('accountreportinggroup') }}">Account Reporting Groups</a></li>
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists</a>
+                            <ul class="dropdown-menu">
+
+                                <li><a href="{{ url('account') }}">List of Accounts</a></li>
+                                <li><a href="{{ url('accountcategory') }}">Account Categories</a></li>
+
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -120,7 +132,8 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management Reports</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ url('trialbalance') }}">Trial Balance</a></li>
-                                        <li><a href="{{ url('trialbalance/select') }}">Select Trial Balance Options</a></li>
+                                        <li><a href="{{ url('trialbalance/select') }}">Select Trial Balance Options</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>

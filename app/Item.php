@@ -44,7 +44,7 @@ class Item extends CompanyBaseModel
 
     public static function store($results, Company $company)
     {
-        foreach ($results->Results as $item) {
+        foreach ($results as $item) {
             $newItem = new Item();
             isset($item->Category) ? $item->CategoryId = $item->Category->ID : $item->CategoryId = null;
             unset($item->Category);

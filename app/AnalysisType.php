@@ -38,7 +38,7 @@ class AnalysisType extends CompanyBaseModel
     public static function store($results, Company $company)
     {
 
-        foreach ($results->Results as $item) {
+        foreach ($results as $item) {
             $newItem = new self();
             unset($item->AnalysisCategories);
             $item->company_id = $company->id;

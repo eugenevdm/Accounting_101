@@ -13,9 +13,9 @@ class Company extends Model
     public static function import()
     {
 
-        $items = Api::getCompanies();
+        $response = Api::getCompanies();
 
-        foreach ($items['results']->Results as $item) {
+        foreach ($response->Results as $item) {
             // Decaseify id as having in uppercase doesn't work on the model save() method
             $item->id = $item->ID;
             unset($item->ID);
