@@ -19,6 +19,8 @@ class TrialBalance extends CompanyBaseModel
 
         TrialBalance::current($company->id)->delete();
 
+        //dd($response);
+
         foreach ($response['results'] as $item) {
             $newItem          = new TrialBalance();
             $item->company_id = $company->id;

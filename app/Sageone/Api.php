@@ -292,7 +292,9 @@ class Api
             $url = $url . "&CompanyId={$company->id}";
         }
 
-        dd($data_string);
+        //dd($url);
+
+        //dd($data_string);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

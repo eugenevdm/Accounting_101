@@ -49,9 +49,13 @@ class TrialBalanceController extends Controller
 
         $response = Api::post('TrialBalance/Export', $this->company, $post, null, true);
 
+        //dd("Hello");
+
         TrialBalance::import($this->company, $response);
 
         $trialbalance = TrialBalance::current($this->company->id)->orderBy('id', 'desc')->get();
+
+        //dd("Hello");
 
         return view('trialbalance.index', compact('trialbalance','fromDate','toDate'));
 
