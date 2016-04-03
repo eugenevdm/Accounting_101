@@ -14,14 +14,14 @@ class TrialBalance extends CompanyBaseModel
         return $this->belongsTo('\App\Account', 'AccountId');
     }
 
-    public static function import(Company $company, $response)
+    public static function import(Company $company, $results)
     {
 
         TrialBalance::current($company->id)->delete();
 
         //dd($response);
 
-        foreach ($response['results'] as $item) {
+        foreach ($results as $item) {
             $newItem          = new TrialBalance();
             $item->company_id = $company->id;
             $newItem->fill((array)$item);

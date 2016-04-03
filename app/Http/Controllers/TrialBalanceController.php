@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Sageone\Api;
 use App\TrialBalance;
+use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 
 class TrialBalanceController extends Controller
@@ -47,11 +47,11 @@ class TrialBalanceController extends Controller
             'CurrencyId'   => 1
         ];
 
-        $response = Api::post('TrialBalance/Export', $this->company, $post, null, true);
+        $results = Api::apiCall('TrialBalance/Export', 0, config('sageoneapi.max_results'), $this->company, $post);
 
-        //dd("Hello");
+        //dd($response);
 
-        TrialBalance::import($this->company, $response);
+        TrialBalance::import($this->company, $results);
 
         $trialbalance = TrialBalance::current($this->company->id)->orderBy('id', 'desc')->get();
 
