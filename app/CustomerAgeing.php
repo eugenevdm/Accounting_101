@@ -36,4 +36,26 @@ class CustomerAgeing extends CompanyBaseModel
         }
     }
 
+    public static function store($results, Company $company) {
+
+        foreach ($results as $item) {
+
+            $newItem          = new self();
+
+            if (isset($item->Customer)) {
+                $item->CustomerId = $item->Customer->ID;
+            } else {
+                $item->CustomerId = null;
+            }
+            unset($item->Customer);
+
+            unset($item->AgeingTransactions);
+
+            $item->company_id = $company->id;
+            $newItem->fill((array)$item);
+            $newItem->save();
+        }
+
+    }
+
 }

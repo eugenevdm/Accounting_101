@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ApiParams extends Model
+class ApiJob extends Model
 {
     //
 }

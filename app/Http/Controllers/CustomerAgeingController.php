@@ -2,17 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\ApiCommand;
+use App\ApiJob;
 use App\Sageone\Api;
 use App\Http\Requests;
 use App\CustomerAgeing;
+use App\Jobs\RetrieveApiData;
+use App\Snowball\Utils;
 use Illuminate\Support\Facades\Input;
 
 class CustomerAgeingController extends Controller
 {
 
+    /**
+     * Display customer ageing sorting by Customer Name
+     * See: http://stackoverflow.com/questions/23530051/laravel-eloquent-sort-by-relation-table-column
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $customerageing = CustomerAgeing::current($this->company->id)->get();
+//        $customerageing = CustomerAgeing::current($this->company->id)->get();
+
+        $customerageing = CustomerAgeing::join('customers as c', 'c.ID', '=', 'customer_ageing.CustomerId')
+            ->orderBy('c.Name')
+            ->select('customer_ageing.*')       // just to avoid fetching anything from joined table
+            //->with('customers')         // if you need options data anyway
+            ->get();
+
+        //dd($customerageing);
+
         return view('customerageing.index', compact('customerageing'));
     }
 
@@ -52,11 +71,37 @@ class CustomerAgeingController extends Controller
 
         //dd($input);
 
-        $response = Api::post('CustomerAgeing/GetDetail', $this->company, $input, null, true);
+        $results = Api::apiCall('CustomerAgeing/GetDetail', 0, config('sageoneapi.max_results'), $this->company, $input);
 
-        CustomerAgeing::import($this->company, $response);
+        $totalResults = $results->TotalResults;
+//            dd($totalResults);
+
+        Utils::decho("TotalResults: " . $totalResults);
+
+        $apiCommand = ApiCommand::where('command', 'CustomerAgeing/GetDetail')->first();
+        // TODO Add company ID above
+
+        if ($apiCommand->last_total_results <> $totalResults) {
+
+            $api_params = new ApiJob();
+            $api_params->api_command = $apiCommand->command;
+            $api_params->total_results = $totalResults;
+            $api_params->skip = $apiCommand->last_total_results;
+            $api_params->top = config('sageoneapi.max_results');
+            $api_params->company_id = $this->company->id;
+            $api_params->status = 'unprocessed';
+            $api_params->save();
+
+            dispatch(new RetrieveApiData($apiCommand, $this->company, $input));
+
+        }
+
+        //CustomerAgeing::import($this->company, $response);
 
         $customerageing = CustomerAgeing::current($this->company->id)->orderBy('id', 'desc')->get();
+
+        //dd($customerageing);
+
         return view('customerageing.index', compact('customerageing'));
 
     }

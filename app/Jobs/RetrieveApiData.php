@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\ApiParams;
+use App\ApiJob;
 use App\Company;
 use App\Sageone\Api;
 use App\Snowball\Utils;
@@ -38,19 +38,22 @@ class RetrieveApiData extends Job implements ShouldQueue
      */
     private $company;
 
+    private $post;
+
     /**
      * Create a new job instance.
      * @param $apiCommand
      * @param Company $company
+     * @param string $post
      * @internal param $api_command
      * @internal param $skip
      * @internal param $top
      * @internal param Company $model
      */
-    public function __construct($apiCommand, Company $company)
+    public function __construct($apiCommand, Company $company, $post = "")
     {
         // Based on the $api_command and $company, get skip and top parameters
-        $api_params = ApiParams::where('api_command', $apiCommand->command)
+        $api_params = ApiJob::where('api_command', $apiCommand->command)
             ->where('company_id', $company->id)
             ->where('status', 'unprocessed')
             ->first();
@@ -60,6 +63,7 @@ class RetrieveApiData extends Job implements ShouldQueue
         $this->skip        = $api_params->skip;
         $this->top         = $api_params->top;
         $this->company     = $company;
+        $this->post        = $post;
     }
 
     /**
@@ -71,7 +75,11 @@ class RetrieveApiData extends Job implements ShouldQueue
     {
         Utils::decho("Now calling API in handle()...");
 
-        $results = Api::apiCall($this->api_command, $this->skip, $this->top, $this->company);
+        $results = Api::apiCall($this->api_command, $this->skip, $this->top, $this->company, $this->post);
+
+        echo "<pre>";
+        print_r($results);
+        echo "</pre>";
 
         Utils::decho("Returned Results: " . $results->ReturnedResults);
 
@@ -81,7 +89,7 @@ class RetrieveApiData extends Job implements ShouldQueue
         call_user_func_array([$class, 'store'], [$results->Results, $this->company]);
 
         if ($results->ReturnedResults < config('sageoneapi.max_results')) {
-            $api_params         = ApiParams::where('api_command', $this->api_command)
+            $api_params         = ApiJob::where('api_command', $this->api_command)
                 ->where('company_id', $this->company->id)
                 ->where('status', 'unprocessed')
                 ->first();
@@ -91,14 +99,14 @@ class RetrieveApiData extends Job implements ShouldQueue
             $this->api->last_total_results = $results->TotalResults;
             $this->api->save();
         } else {
-            $api_params       = ApiParams::where('api_command', $this->api_command)
+            $api_params       = ApiJob::where('api_command', $this->api_command)
                 ->where('company_id', $this->company->id)
                 ->where('status', 'unprocessed')
                 ->first();
             $api_params->skip = $api_params->skip + config('sageoneapi.max_results');
             Utils::decho('Param increased: ' . $api_params->skip);
             $api_params->save();
-            dispatch(new RetrieveApiData($this->api, $this->company));
+            dispatch(new RetrieveApiData($this->api, $this->company, $this->post));
         }
 
     }

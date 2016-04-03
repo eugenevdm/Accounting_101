@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\ApiParams;
 use App\Item;
+use App\ApiJob;
 use App\Account;
 use App\Company;
 use App\Invoice;
@@ -73,7 +73,7 @@ class ImportCompany extends Command
 
             if ($apiCommand->last_total_results <> $totalResults) {
 
-                $api_params = new ApiParams();
+                $api_params = new ApiJob();
                 $api_params->api_command = $apiCommand->command;
                 $api_params->total_results = $totalResults;
                 $api_params->skip = $apiCommand->last_total_results;

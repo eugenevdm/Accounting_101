@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ApiParams;
 use App\Item;
+use App\ApiJob;
 use App\Account;
 use App\Company;
 use App\Invoice;
@@ -106,7 +106,7 @@ class ImportController extends Controller
                 Item::store($results, $this->company);
 
                 if ($results->TotalResults > $results->ReturnedResults) {
-                    $api_params                = new ApiParams();
+                    $api_params                = new ApiJob();
                     $api_params->api_command   = $api_command;
                     $api_params->total_results = $results->TotalResults;
                     $api_params->skip          = 100;
