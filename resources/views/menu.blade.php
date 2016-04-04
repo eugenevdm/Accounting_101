@@ -14,7 +14,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ $company->Name }}<br>
+                {{ $company->shortname }}<br>
                 <font size="1">Accounting 101</font>
             </a>
         </div>
@@ -66,6 +66,24 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('customerageing') }}">Customer Balances - Days Outstanding</a></li>
                                 <li><a href="{{ url('customerageing/select') }}">Create Customer Ageing Report</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav">
+
+                <li class="menu-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('supplier/purchaseorder') }}">Supplier Purchase Orders</a></li>
                             </ul>
                         </li>
 

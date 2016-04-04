@@ -27,6 +27,7 @@
                 <tr>
                     {{--<th>ID</th>--}}
                     <th>Company Name</th>
+                    <th>Short Name</th>
                     <th>Username</th>
                     <th>Sync</th>
                     <th>Action</th>
@@ -38,6 +39,7 @@
                 @foreach ($companies as $company)
                     <tr>
                         <td><a href="{{ route('selectCompany', ['id' => $company->id]) }}">{{ $company->Name}}</a></td>
+                        <td>{{ $company->shortname }} </td>
                         <td>{{ $company->username }} </td>
                         <td>{{ $company->sync }} </td>
                         <td width="1%">

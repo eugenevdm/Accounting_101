@@ -9,3 +9,14 @@ php artisan make:migration:schema create_tax_invoices_table --schema="ID, DueDat
 php artisan make:migration:schema create_tax_invoice_items_table --schema="ID, SelectionId, TaxTypeId, Description, LineType, Quantity, UnitPriceExclusive, Unit, UnitPriceInclusive, TaxPercentage, DiscountPercentage, Exclusive, Discount, Tax, Total, Comments, AnalysisCategoryId1, AnalysisCategoryId2, AnalysisCategoryId3, $TrackingCode, CurrencyId, UnitCost"
 
 php artisan make:migration:schema create_tax_invoice_items_table --schema="ID, Name, CurrencySymbol, CurrencyDecimalDigits, NumberDecimalDigits, DecimalSeparator, HoursDecimalDigits, ItemCostPriceDecimalDigits, ItemSellingPriceDecimalDigits, PostalAddress1, PostalAddress2, PostalAddress3, PostalAddress4, PostalAddress5, GroupSeparator, RoundingValue, TaxSystem, RoundingType, AgeMonthly, DisplayInactiveItems, WarnWhenItemCostIsZero, WarnWhenItemQuantityIsZero, WarnWhenItemSellingBelowCost, CountryId, CompanyEntityTypeId, TakeOnBalanceDate, EnableCustomerZone, EnableAutomaticBankFeedRefresh, ContactName, Telephone, Fax, Mobile, Email, IsPrimarySendingEmail, PostalAddress01, PostalAddress02, PostalAddress03, PostalAddress04, PostalAddress05, CompanyInfo01, CompanyInfo02, CompanyInfo03, CompanyInfo04, CompanyInfo05, IsOwner, UseCCEmail, CCEmail, CheckForDuplicateCustomerReferences, CheckForDuplicateSupplierReferences, DisplayName, DisplayInactiveCustomers, DisplayInactiveSuppliers, DisplayInactiveTimeProjects, LockProcessing, LockProcessingDate, LockTimesheetProcessing, LockTimesheetProcessingDate, TaxPeriodFrequency, PreviousTaxPeriodEndDate, PreviousTaxReturnDate, UseNoreplyEmail, AgeingBasedOnDueDate, UseLogoOnEmails, UseLogoOnCustomerZone, City, State, Country, HomeCurrencyId, CurrencyId, Created, Modified, Active, TaxNumber, RegisteredName, RegistrationNumber"
+
+php artisan make:migration:schema create_purchase_orders_table --schema="ID:integer, DeliveryDate:date, SupplierId:integer, SupplierName:string, Modified:datetime, Created:datetime, Date:datetime, Inclusive:boolean, DiscountPercentage:double, TaxReference:string, DocumentNumber:string, Reference:string, Message:string, Discount:double, Exclusive:double, Tax:double, Rounding:double, Total: double, AmountDue: double, PostalAddress01:string, PostalAddress02:string, PostalAddress03:string, PostalAddress04:string, PostalAddress05:string, DeliveryAddress01:string, DeliveryAddress02:string, DeliveryAddress03:string, DeliveryAddress04:string, DeliveryAddress05:string, Printed:boolean, CurrencyId:integer, ExchangeRate:double, TaxPeriodId: integer, Editable:boolean, HasAttachments:boolean, HasNotes:boolean, HasAnticipatedDate: true, AnticipatedDate: date"
+
+
+
+
+
+
+
+
+

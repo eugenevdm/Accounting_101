@@ -20,11 +20,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-    {!! Form::model($c, ['method' => 'PATCH', 'route' => ['company.update', $c->id ]]) !!}
-    @include('company/partials/_form', ['submit_text' => 'Update'])
-    {!! Form::close() !!}
+            {!! Form::model($c, ['method' => 'PATCH', 'route' => ['company.update', $c->id ]]) !!}
+            @include('company/partials/_form', ['submit_text' => 'Update'])
+            {!! Form::close() !!}
 
-    </div>
+        </div>
     </div>
 
 @endsection

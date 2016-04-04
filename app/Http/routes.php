@@ -83,6 +83,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('itemcategory','ItemCategoryController');
 
+    Route::resource('supplier/purchaseorder','PurchaseOrderController');
+
     Route::get('trialbalance/select','TrialBalanceController@select');
     Route::resource('trialbalance','TrialBalanceController');
 

@@ -19,15 +19,13 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $c = Company::find($id);
-        //dd($id);
-        //dd($company);
         return view('company.edit', compact('c'));
     }
 
     public function update($id) {
         $input = Input::all();
         Company::find($id)->update($input);
-        return Redirect::route('company.index')->with('message', 'Company sync updated.');
+        return Redirect::route('company.index')->with('message', 'Company updated.');
     }
 
     public function select($id) {

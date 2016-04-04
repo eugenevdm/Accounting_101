@@ -13,6 +13,10 @@ class UpdateCompaniesTable extends Migration
     {
         Schema::table('companies', function ($table) {
             $table->boolean('sync');
+            $table->string('username');
+            $table->string('password');
+            $table->string('api_key');
+
         });
     }
 

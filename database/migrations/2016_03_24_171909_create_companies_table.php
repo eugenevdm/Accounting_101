@@ -89,6 +89,7 @@ class CreateCompaniesTable extends Migration
             $table->string('TaxNumber');
             $table->string('RegisteredName');
             $table->string('RegistrationNumber');
+
             $table->timestamps();
         });
     }

@@ -77,9 +77,9 @@ class RetrieveApiData extends Job implements ShouldQueue
 
         $results = Api::apiCall($this->api_command, $this->skip, $this->top, $this->company, $this->post);
 
-        echo "<pre>";
-        print_r($results);
-        echo "</pre>";
+//        echo "<pre>";
+//        print_r($results);
+//        echo "</pre>";
 
         Utils::decho("Returned Results: " . $results->ReturnedResults);
 
