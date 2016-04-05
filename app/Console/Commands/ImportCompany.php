@@ -59,7 +59,7 @@ class ImportCompany extends Command
 
     private function getApiTotals($company) {
 
-        $apiCommands = ApiCommand::where('cron_include', true)->orderBy('cron_order')->get();
+        $apiCommands = ApiCommand::where('company_id', $company->id)->where('cron_include', true)->orderBy('cron_order')->get();
 
         foreach($apiCommands as $apiCommand) {
 

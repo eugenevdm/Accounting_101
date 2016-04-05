@@ -25,20 +25,18 @@
             <table class="table table-striped table-hover table-condensed">
                 <thead>
                 <tr>
-                    {{--<th>ID</th>--}}
+                    <th></th>
                     <th>Company Name</th>
                     <th>Short Name</th>
                     <th>Username</th>
                     <th>Sync</th>
                     <th>Action</th>
-                    {{--<th>Last Login</th>--}}
-                    {{--<th>Financial Year End</th>--}}
-                    {{--<th>Next VAT Submission Date</th>--}}
                 </tr>
                 </thead>
                 @foreach ($companies as $company)
                     <tr>
-                        <td><a href="{{ route('selectCompany', ['id' => $company->id]) }}">{{ $company->Name}}</a></td>
+                        <td><a href="{{ route('selectCompany', ['id' => $company->id]) }}">Select</a></td>
+                        <td><a href="{{ route('company.show', ['id' => $company->id]) }}">{{ $company->Name}}</a></td>
                         <td>{{ $company->shortname }} </td>
                         <td>{{ $company->username }} </td>
                         <td>{{ $company->sync }} </td>
@@ -48,9 +46,6 @@
                                     <span class="fa fa-edit "></span></span>
                             </a>
                         </td>
-                        {{--<td>{{ $company->Modified }}</td>--}}
-                        {{--<td>{{ $company->PreviousTaxPeriodEndDate }}</td>--}}
-                        {{--<td>{{ $company->PreviousTaxReturnDate }}</td>--}}
                     </tr>
                 @endforeach
             </table>

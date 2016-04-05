@@ -20,12 +20,14 @@
 
     @if ($customers->count())
 
-        <div class="table-responsive">
+        <div class="">
+
+            {{ \App\Customer::count() }} records.
 
             <table class="table table-striped table-hover table-condensed">
                 <thead>
                 <tr>
-                    {{--<th>ID</th>--}}
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Contact Name</th>
@@ -38,7 +40,8 @@
                 </thead>
                 @foreach ($customers as $customer)
                     <tr>
-                        <td>{{ $customer->Name}}</td>
+                        <td>{{ $customer->ID }}</td>
+                        <td>{{ $customer->Name }}</td>
                         <td>{{ is_object($customer->category) ? $customer->category['Description'] : '' }}</td>
                         <td>{{ $customer->ContactName }}</td>
                         <td>{{ $customer->Telephone }}</td>

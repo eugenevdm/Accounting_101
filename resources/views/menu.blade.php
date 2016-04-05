@@ -77,7 +77,7 @@
             <ul class="nav navbar-nav">
 
                 <li class="menu-item dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suppliers <span class="caret"></span></a>
                     <ul class="dropdown-menu">
 
                         <li class="menu-item dropdown dropdown-submenu">
@@ -93,25 +93,41 @@
             </ul>
 
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Items <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('item') }}">List of Items</a></li>
-                        <li><a href="{{ url('itemcategory') }}">Item Categories</a></li>
+
+                <li class="menu-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Items <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('item') }}">List of Items</a></li>
+                                <li><a href="{{ url('itemcategory') }}">Item Categories</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
+
             </ul>
 
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Banking <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ url('bankaccount') }}">List of Banks and Credit Cards</a></li>
-                        <li><a href="{{ url('bankaccountcategory') }}">Bank and Credit Card Categories</a></li>
+
+                <li class="menu-item dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Banking <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li class="menu-item dropdown dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('bankaccount') }}">List of Banks and Credit Cards</a></li>
+                                <li><a href="{{ url('bankaccountcategory') }}">Bank and Credit Card Categories</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
+
             </ul>
 
             <ul class="nav navbar-nav">
@@ -119,8 +135,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false">Accounts<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-
-                        <li><a href="{{ url('accountreportinggroup') }}">Account Reporting Groups</a></li>
 
                         <li class="menu-item dropdown dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists</a>
@@ -131,6 +145,8 @@
 
                             </ul>
                         </li>
+
+                        <li><a href="{{ url('accountreportinggroup') }}">Account Reporting Groups</a></li>
 
                     </ul>
                 </li>
@@ -175,7 +191,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">API</a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('apisettings') }}">Change API Settings</a></li>
-                                <li><a href="{{ url('apicommands') }}">API Commands</a></li>
+                                <li><a href="{{ url('apicommand') }}">API Commands</a></li>
                             </ul>
                         </li>
 

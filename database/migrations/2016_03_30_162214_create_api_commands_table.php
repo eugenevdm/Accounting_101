@@ -14,6 +14,7 @@ class CreateApiCommandsTable extends Migration
     {
         Schema::create('api_commands', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('company_id');
             $table->string('name');
             $table->string('model');
             $table->string('description');

@@ -43,6 +43,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('analysiscode','AnalysisCodeController');
 
+    Route::resource('apicommand','ApiCommandController');
+
     Route::resource('apisettings','ApiSettingsController');
 
     Route::resource('bankaccount','BankAccountController');

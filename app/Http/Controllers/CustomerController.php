@@ -20,9 +20,8 @@ class CustomerController extends Controller
     }
 
     public function index() {
-        //dd($this->company_id)
-        $customers = Customer::current($this->company->id)->paginate(100);
-        //dd($customers);
+//        $customers = Customer::current($this->company->id)->paginate(100);
+        $customers = Customer::current($this->company->id)->paginate(5000);
         return view('customer.index', compact('customers'));
     }
 
