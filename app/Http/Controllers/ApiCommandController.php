@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Redirect;
 use App\ApiCommand;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use Redirect;
 
 class ApiCommandController extends Controller
 {
 
     public function index() {
-        $apicommands = ApiCommand::get();
+        $apicommands = ApiCommand::orderBy('command')->get();
         return view('apicommand.index',compact('apicommands'));
     }
 
@@ -26,8 +26,9 @@ class ApiCommandController extends Controller
 
     public function store() {
         $input = Input::all();
-        $result = ApiCommand::create($input);
-        dd($result);
+        ApiCommand::create($input);
+        return Redirect::route('apicommand.index')->with('message', 'API Command created.');
+        //dd($result);
     }
 
     public function update($id)

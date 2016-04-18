@@ -8,12 +8,13 @@ class ApiCommand extends Model
 {
 
     protected $fillable = [
-        'company_id',
         'command',
-        'model',
+        'company_id',
         'cron_include',
         'cron_order',
-        'description'
+        'description',
+        'model',
+        'url'
     ];
 
 }
